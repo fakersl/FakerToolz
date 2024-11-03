@@ -1,6 +1,6 @@
-# 🛠️ Multitool do Faker
+# 🛠️ fakerToolz
 
-Bem-vindo ao **Multitool do Faker**! Uma ferramenta poderosa projetada para otimizar o desempenho do seu PC com ajustes simples e eficazes. Este projeto é ideal para usuários que desejam um controle maior sobre a configuração de hardware e software do seu sistema.
+Bem-vindo ao **FakerToolz*! Uma ferramenta poderosa projetada para otimizar o desempenho do seu PC com ajustes simples e eficazes. Este projeto é ideal para usuários que desejam um controle maior sobre a configuração de hardware e software do seu sistema.
 
 ## 🚀 Funcionalidades
 
