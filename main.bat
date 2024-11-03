@@ -659,12 +659,78 @@ pause
 goto Menu
 
 :4
-echo. Iniciando limpeza no PC...
-:: Limpar arquivos temporários do Windows
-cleanmgr /sagerun:1
-echo. Limpeza concluída!
-pause
-goto Menu
+:clean
+cls
+echo.
+echo.
+echo.                                            %p%░█████╗░██╗░░░░░███████╗░█████╗░███╗░░██╗  
+echo.                                            %p%██╔══██╗██║░░░░░██╔════╝██╔══██╗████╗░██║
+echo.                                            %p%██║░░╚═╝██║░░░░░█████╗░░███████║██╔██╗██║      
+echo.                                            %p%██║░░██╗██║░░░░░██╔══╝░░██╔══██║██║╚████║ 
+echo.                                            %p%╚█████╔╝███████╗███████╗██║░░██║██║░╚███║    
+echo.                                            %p%░╚════╝░╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░░╚══╝      
+echo.                        %b%"════════════════════════════════════════════════════════════════════════════════"%w%                
+echo.                                                                                          
+echo.                                                                                          
+echo.                          %p%[%w%1%p%]%w% Limpar dados temporários do dispositivo     %p%[%w%2%p%]%w% Gerenciador de limpeza do Windows       
+echo.                                                                                           
+echo.                                                                                           
+echo.                                                 %p%[%w%M%p%]%w% Voltar ao menu                              
+echo.                                                                                          
+echo.                        %b%"════════════════════════════════════════════════════════════════════════════════"
+echo.                                         %W% Limpe um monte de dados temporários do seu PC
+echo.                                       %W% Exclui drivers antigos, cache, logs e muito mais
+echo.                        %b%"════════════════════════════════════════════════════════════════════════════════"
+echo. 
+set /p input=:
+if /i %input% == 1 goto c1
+if /i %input% == 2 goto c2
+if /i %input% == M cls & goto menu
+
+) ELSE (
+echo Invalid Input & goto MisspellRedirect
+
+:MisspellRedirect
+cls
+echo Misspell Detected
+timeout 2
+goto RedirectMenu
+
+
+:RedirectMenu
+cls
+goto :12
+
+:c1
+cls
+echo %w% -  Limpando dados inúteis do dispositivo...%b%
+chcp 437 > nul
+@echo on
+POWERSHELL "$Devices = Get-PnpDevice | ? Status -eq Unknown;foreach ($Device in $Devices) { &\"pnputil\" /remove-device $Device.InstanceId }"
+@echo off
+chcp 65001 > nul
+echo.
+echo.
+echo.
+echo.                                              %b%"═══════════════════════════════════════════════════════"
+echo.                                                %w%  GG! Aperte qualquer tecla para continuar...  
+echo.                                              %b%"═══════════════════════════════════════════════════════"
+pause > nul
+cls
+goto :4
+
+:c2
+cls
+start "" /wait "C:\Windows\System32\cleanmgr.exe"
+echo.
+echo.
+echo.
+echo.                                              %b%"═══════════════════════════════════════════════════════"
+echo.                                                %w%  GG! Aperte qualquer tecla para continuar...  
+echo.                                              %b%"═══════════════════════════════════════════════════════"
+pause > nul
+cls
+goto :menu
 
 :5
 echo. Ajustando configurações de memória...
