@@ -57,7 +57,6 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ## 🤝 Agradecimentos
 
-- Agradeço a todos os colaboradores e usuários que ajudam a melhorar este projeto.
 - Inspirado por diversas ferramentas de otimização de sistema.
 
 ---
