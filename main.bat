@@ -266,10 +266,10 @@ echo.
 echo.                                                      %p%[%w%1%p%]%w% General Peformance tweaks   
 echo.                        
 echo.                                                                                          
-echo.                                                          %p%[%w%M%p%]%w% Back to menu                           
+echo.                                                          %p%[%w%M%p%]%w% Voltar ao menu                           
 echo.
 echo.                        %b%"══════════════════════════════════════════════════════════════════════════════════════════════"%w%
-echo.                             %W% Optimizes a bunch of registry values which will increase your performance and lower latency
+echo.                             %W% Otimiza vários valores de registro que aumentarão seu desempenho e diminuirão a latência
 echo.                        %b%"══════════════════════════════════════════════════════════════════════════════════════════════"%w%
 echo. 
 echo. 
@@ -293,46 +293,46 @@ cls
 goto :1
 
 :gen1
-echo %w% - Microsoft Mulitimedia%b%
+echo %w% - Microsoft Multimídia%b%
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Games" /v "FpsAll" /t REG_DWORD /d "1" /f
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Games" /v "FpsStatusGames" /t REG_DWORD /d "10" /f
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Games" /v "FpsStatusGamesAll" /t REG_DWORD /d "4" /f
 Reg.exe add "HKCU\SOFTWARE\Microsoft\Games" /v "GameFluidity" /t REG_DWORD /d "1" /f
 timeout /t 1 /nobreak > nul
 
-echo %w% - Disable Nagiles algorithm (enable tcpnodelay ) %b%
+echo %w% - Desative o algoritmo Nagiles (habilite tcpnodelay ) %b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces" /v "TcpAckFrequency" /t REG_DWORD /d "1" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces" /v "TCPNoDelay" /t REG_DWORD /d "1" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces" /v "TcpDelAckTicks" /t REG_DWORD /d "0" /f
 timeout /t 1 /nobreak > nul
 
-echo %w% - Disabling Fast Startup%b%
+echo %w% - Desativando inicialização rápida%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t REG_DWORD /d "0" /f 
 timeout /t 1 /nobreak > NUL
 
-echo %w% - Disabling Hibernation%b%
+echo %w% - Desativando a hibernação%b%
 powercfg /h off
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t REG_DWORD /d "0" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "SleepReliabilityDetailedDiagnostics" /t REG_DWORD /d "0" /f 
 timeout /t 1 /nobreak > NUL
 
-echo %w% - Disabling Sleep Study%b%
+echo %w% - Desativando o Estudo do Sono%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "SleepStudyDisabled" /t REG_DWORD /d "1" /f 
 timeout /t 1 /nobreak > NUL
 
-echo %w% - Disable Dynamic Tick%b%
+echo %w% - Desativar tick dinâmico%b%
 bcdedit /set disabledynamictick yes >nul 2>&1
 timeout /t 1 /nobreak > NUL
 
-echo %w% - Disable High Precision Event Timer (HPET)%b%
+echo %w% - Desativar temporizador de eventos de alta precisão (HPET)%b%
 bcdedit /deletevalue useplatformclock  >nul 2>&1
 timeout /t 1 /nobreak > NUL
 
-echo %w% - Disable Synthetic Timers%b%
+echo %w% - Desativar temporizadores sintéticos%b%
 bcdedit /set useplatformtick yes  >nul 2>&1
 timeout /t 1 /nobreak > NUL
 
-echo %w% - NFTS Tweaks%b%
+echo %w% - Ajustes de NFTS%b%
 fsutil behavior set memoryusage 2 >nul 2>&1
 fsutil behavior set mftzone 4 >nul 2>&1
 fsutil behavior set disablelastaccess 1 >nul 2>&1
@@ -340,11 +340,11 @@ fsutil behavior set disabledeletenotify 0 >nul 2>&1
 fsutil behavior set encryptpagingfile 0 >nul 2>&1
 timeout /t 1 /nobreak > nul
 
-echo %w% - Network Throttoling Index%b%
+echo %w% - Índice de limitação de rede%b%
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d "4294967295" /f
 timeout /t 1 /nobreak > nul
 
-echo %w% - MMCSS Priority For Low Latency%b%
+echo %w% - Prioridade MMCSS para baixa latência%b%
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Low Latency" /v "Affinity" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Low Latency" /v "Background Only" /t REG_SZ /d "False" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Low Latency" /v "BackgroundPriority" /t REG_DWORD /d "0" /f
@@ -356,7 +356,7 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\System
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Low Latency" /v "Latency Sensitive" /t REG_SZ /d "True" /f
 timeout /t 1 /nobreak > nul
 
-echo %w% - MMCSS Priority For Games%b%
+echo %w% - Prioridade MMCSS para jogos%b%
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Affinity" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Background Only" /t REG_SZ /d "False" /f
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "BackgroundPriority" /t REG_DWORD /d "0" /f
@@ -368,35 +368,35 @@ Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\System
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Latency Sensitive" /t REG_SZ /d "True" /f
 timeout /t 1 /nobreak > nul
 
-echo %w% - Setting Win32Priority%b%
+echo %w% - Configurando Win32Priority%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d "38" /f 
 timeout /t 1 /nobreak > nul
 
-echo %w% - Disabling VirtualizationBasedSecurity%b%
+echo %w% - Desativando VirtualizationBasedSecurity%b%
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVirtualizationBasedSecurity" /t REG_DWORD /d "0" /f 
 timeout /t 1 /nobreak > NUL
-echo %w% - Disabling HVCIMATRequired%b%
+echo %w% - Desativando HVCIMAT Obrigatório%b%
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "HVCIMATRequired" /t REG_DWORD /d "0" /f 
 timeout /t 1 /nobreak > NUL
-echo %w% - Disabling ExceptionChainValidation%b%
+echo %w% - Desativando ExceptionChainValidation%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "DisableExceptionChainValidation" /t REG_DWORD /d "1" /f 
 timeout /t 1 /nobreak > NUL
-echo %w% - Disabling Sehop%b%
+echo %w% - Desativando Sehop%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "KernelSEHOPEnabled" /t REG_DWORD /d "0" /f 
 timeout /t 1 /nobreak > NUL
-echo %w% - Disabling CFG%b%
+echo %w% - Desativando CFG%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "EnableCfg" /t REG_DWORD /d "0" /f 
 timeout /t 1 /nobreak > NUL
-echo %w% - Disabling Protection Mode%b%
+echo %w% - Desativando o modo de proteção%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager" /v "ProtectionMode" /t REG_DWORD /d "0" /f 
 timeout /t 1 /nobreak > NUL
-echo %w% - Disabling Spectre And Meltdown%b%
+echo %w% - Desativando Spectre e Meltdown%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettings" /t REG_DWORD /d "1" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d "3" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d "3" /f 
 timeout /t 1 /nobreak > NUL
 
-echo %w% - Disabling Other Mitigations%b%
+echo %w% - Desativando outras mitigações%b%
 chcp 437 >nul 
 timeout /t 1 /nobreak > NUL
 powershell "Remove-Item -Path \"HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\*\" -Recurse -ErrorAction SilentlyContinue"
@@ -404,43 +404,43 @@ timeout /t 1 /nobreak > NUL
 chcp 65001 >nul  
 timeout /t 1 /nobreak > NUL
 
-echo %w% - IRQ8 Priority %b%
+echo %w% - Prioridade IRQ8 %b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "IRQ8Priority" /t REG_DWORD /d "1" /f
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "IRQ8Priority" /t REG_DWORD /d "1" /f
 timeout /t 1 /nobreak > NUL
 
-echo %w% - IRQ16 Priority %b%
+echo %w% - Prioridade IRQ16 %b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "IRQ16Priority" /t REG_DWORD /d "2" /f
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "IRQ16Priority" /t REG_DWORD /d "2" /f
 timeout /t 1 /nobreak > NUL
 
-echo %w% - Enabling Large System Cache%b%
+echo %w% - Habilitando grande cache do sistema%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "LargeSystemCache" /t REG_DWORD /d "1" /f 
 timeout /t 1 /nobreak > NUL
 
 
-echo %w% - Disabling Paging Executive%b%
+echo %w% - Desativando o Paging Executive%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "1" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DpiMapIommuContiguous" /t REG_DWORD /d "1" /f 
 timeout /t 1 /nobreak > NUL
 
-echo %w% - Disabling Address Space Layout Randomization%b%
+echo %w% - Desativando a randomização do layout do espaço de endereço%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "MoveImages" /t REG_DWORD /d "0" /f 
 timeout /t 1 /nobreak > NULw
 
 
-echo %w% - SVC split host%b%
+echo %w% - Host dividido SVC%b%
 for /f "skip=1" %%i in ('wmic os get TotalVisibleMemorySize') do if not defined TOTAL_MEMORY set "TOTAL_MEMORY=%%i" & set /a SVCHOST=%%i+1024000
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d "!SVCHOST!" /f 
 timeout /t 1 /nobreak > NUL
 
 
-echo %w% - Disable Prefetch and superfetch%b%
+echo %w% - Desativar pré-busca e superbusca%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t REG_DWORD /d "0" /f
 timeout /t 1 /nobreak > NUL
 
-echo %w% - Decrease processes kill time and menu show delay%b%
+echo %w% - Diminuir o tempo de interrupção dos processos e o atraso na exibição do menu%b%
 Reg.exe add "HKCU\Control Panel\Desktop" /v "AutoEndTasks" /t REG_SZ /d "1" /f
 Reg.exe add "HKCU\Control Panel\Desktop" /v "HungAppTimeout" /t REG_SZ /d "1000" /f
 Reg.exe add "HKCU\Control Panel\Desktop" /v "WaitToKillAppTimeout" /t REG_SZ /d "2000" /f
@@ -450,18 +450,18 @@ Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control" /v "WaitToKillServiceTimeout
 timeout /t 1 /nobreak > NUL
 
 
-echo %w% - Setting Time Stamp%b%
+echo %w% - Definir carimbo de data/hora%b%
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Reliability" /v "TimeStampInterval" /t REG_DWORD /d "1" /f 
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Reliability" /v "IoPriority" /t REG_DWORD /d "3" /f 
 timeout /t 1 /nobreak > NUL
 
 
-echo %w% - Setting CSRSS to Realtime%b%
+echo %w% - Configurando CSRSS para Tempo Real%b%
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions" /v "CpuPriorityClass" /t REG_DWORD /d "4" /f 
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions" /v "IoPriority" /t REG_DWORD /d "3" /f 
 timeout /t 1 /nobreak > NUL
 
-echo %w% - Setting Latency Tolerance%b%
+echo %w% - Configurando a tolerância de latência%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorLatencyTolerance" /t REG_DWORD /d "1" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorRefreshLatencyTolerance" /t REG_DWORD /d "1" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "ExitLatency" /t REG_DWORD /d "1" /f 
@@ -499,7 +499,7 @@ Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Power" /v "Mo
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Power" /v "TransitionLatency" /t REG_DWORD /d "1" /f 
 timeout /t 1 /nobreak > nul
 
-echo %w% - Setting System Responsiveness%b%
+echo %w% - Configurando a capacidade de resposta do sistema%b%
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d "0" /f 
 
 
