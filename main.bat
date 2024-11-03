@@ -514,14 +514,139 @@ cls
 goto :menu
 
 :2
-echo. Ajustando configurações do mouse e teclado...
-:: Aumentar a sensibilidade do mouse
-reg add "HKEY_CURRENT_USER\Control Panel\Mouse" /v MouseSensitivity /t REG_SZ /d 10 /f
-:: Ajustar a velocidade do ponteiro
-reg add "HKEY_CURRENT_USER\Control Panel\Mouse" /v MouseSpeed /t REG_SZ /d 2 /f
-echo. Configurações de mouse e teclado ajustadas!
-pause
-goto Menu
+:kbm
+cls
+echo.
+echo.
+echo.                                                    %p% ██╗░░██╗██████╗░███╗░░░███╗
+echo.                                                    %p% ██║░██╔╝██╔══██╗████╗░████║
+echo.                                                    %p% █████═╝░██████╦╝██╔████╔██║
+echo.                                                    %p% ██╔═██╗░██╔══██╗██║╚██╔╝██║
+echo.                                                    %p% ██║░╚██╗██████╦╝██║░╚═╝░██║
+echo.                                                    %p% ╚═╝░░╚═╝╚═════╝░╚═╝░░░░░╚═╝    
+echo.                        %b%"════════════════════════════════════════════════════════════════════════════════"%w%                    
+echo.                                                                                          
+echo.                                                                                          
+echo.                                       %p%[%w%1%p%]%w% Otimize as configurações de registro do mouse e teclado             
+echo.                                                                                           
+echo.                                       %p%[%w%2%p%]%w% Tamanho da fila de dados do teclado + mouse
+echo.                                                                                          
+echo.                                                                                           
+echo.                                                   %p%[%w%M%p%]%w% Voltar ao menu                               
+echo.                                                                                          
+echo.                        %b%"════════════════════════════════════════════════════════════════════════════════"
+echo.                                  %w% Otimize seu mouse e teclado para a menor latência possível
+echo.                        %b%"════════════════════════════════════════════════════════════════════════════════"
+echo.
+
+set /p input=:
+if /i %input% == 1 goto k1
+if /i %input% == 2 goto k2
+if /i %input% == M cls & goto menu
+
+) ELSE (
+echo Invalid Input & goto MisspellRedirect
+
+:MisspellRedirect
+cls
+echo Misspell Detected
+timeout 2
+goto RedirectMenu
+
+
+:RedirectMenu
+cls
+goto :kbm
+
+:k2
+cls
+echo.
+echo.
+echo.
+
+echo.                                                          %p% ██╗░░██╗██████╗░███╗░░░███╗
+echo.                                                          %p% ██║░██╔╝██╔══██╗████╗░████║
+echo.                                                          %p% █████═╝░██████╦╝██╔████╔██║
+echo.                                                          %p% ██╔═██╗░██╔══██╗██║╚██╔╝██║
+echo.                                                          %p% ██║░╚██╗██████╦╝██║░╚═╝░██║
+echo.                                                          %p% ╚═╝░░╚═╝╚═════╝░╚═╝░░░░░╚═╝
+echo.                        %b%"══════════════════════════════════════════════════════════════════════════════════════════════"                                                                                                                     
+echo.                                                                                                                      
+echo.                             %p%[%w%1%p%]%w% 14 (High end CPU)      %p%[%w%2%p%]%w% 17 (Mid end CPU)     %p%[%w%3%p%]%w% 20(Low end CPU)                  
+echo.                                                                                                                                                                                       
+echo.                                                                                                                      
+echo.                                                         %p%[%w%T%p%]%w% Gerenciador de Tarefas                                   
+echo.                                                                                                                      
+echo.                                           %p%[%w%R%p%]%w% Reverter ao padrão                
+echo.                                                                                                                                                                                                                                          
+echo.                        %b%"══════════════════════════════════════════════════════════════════════════════════════════════"
+echo.                                                 %w% Quanto menor o valor, menos latência você terá
+echo.                                               %w%Mas pode causar instabilidades em PCs de baixo nível
+echo.                        %b%"══════════════════════════════════════════════════════════════════════════════════════════════"
+echo.
+set /p input=: 
+if /i %input% == 1 goto 14v
+if /i %input% == 2 goto 17v
+if /i %input% == 3 goto 20v
+if /i %input% == R goto Revert
+if /i %input% == T start taskmgr & goto k2
+if /i %input% == X cls & goto mouse
+
+) ELSE (
+echo Invalid Input & goto MisspellRedirect
+
+:MisspellRedirect
+cls
+echo Misspell Detected
+timeout 2 
+goto Redirectmouse
+
+
+:Redirectmouse
+cls
+goto :mouse
+
+:14v
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" /v "MouseDataQueueSize" /t REG_DWORD /d "20" /f
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" /v "KeyboardDataQueueSize" /t REG_DWORD /d "20" /f
+echo.
+echo.
+echo.
+echo.                                              %b%"═══════════════════════════════════════════════════════"
+echo.                                                %w%  GG! Aperte qualquer tecla para continuar...  
+echo.                                              %b%"═══════════════════════════════════════════════════════"
+pause > nul
+cls
+goto :menu
+
+:17v
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" /v "MouseDataQueueSize" /t REG_DWORD /d "23" /f
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" /v "KeyboardDataQueueSize" /t REG_DWORD /d "23" /f
+
+echo.
+echo.
+echo.
+echo.                                              %b%"═══════════════════════════════════════════════════════"
+echo.                                                %w%  GG! Aperte qualquer tecla para continuar...  
+echo.                                              %b%"═══════════════════════════════════════════════════════"
+pause > nul
+cls
+goto :menu
+
+
+:20v
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\mouclass\Parameters" /v "MouseDataQueueSize" /t REG_DWORD /d "32" /f
+Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters" /v "KeyboardDataQueueSize" /t REG_DWORD /d "32" /f
+echo.
+echo.
+echo.
+echo.                                              %b%"═══════════════════════════════════════════════════════"
+echo.                                                %w%  GG! Aperte qualquer tecla para continuar... 
+echo.                                              %b%"═══════════════════════════════════════════════════════"
+pause > nul
+cls
+goto :menu
+
 
 :3
 echo. Aplicando Tweaks do Windows...
