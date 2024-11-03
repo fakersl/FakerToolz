@@ -22,14 +22,14 @@ Bem-vindo ao **FakerToolz*! Uma ferramenta poderosa projetada para otimizar o de
 1. **Clone o repositório**:
 
     ```bash
-    git clone https://github.com/seu_usuario/multitool.git
-    cd multitool
+    git clone https://github.com/fakersl/FakerToolz.git
+    cd fakertoolz
     ```
 
 2. **Execute o script**:
 
     ```bash
-    .\multitool.bat
+    .\main.bat
     ```
 
 3. **Navegue pelo menu interativo**: 
